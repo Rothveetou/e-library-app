@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiBars3, HiBookOpen, HiMiniXMark } from "react-icons/hi2";
+import { AuthContext } from "../Context/AuthProvider";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(true);
+
+  const { user } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,14 +30,12 @@ function Navbar() {
 
   const NavLink = [
     { to: "Home", path: "/" },
-    { to: "About", path: "/about" },
     { to: "Shop", path: "/shop" },
     { to: "Sell Your Book", path: "/admin/dashboard" },
-    { to: "Blog", path: "/blog" },
   ];
 
   return (
-    <header className="w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300">
+    <header className="  z-50 w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300">
       <nav
         className={`py-4 lg:px-24 ${
           isSticky ? "stick top-0 right-0 left-0 bg-blue-300 text-base" : ""
@@ -43,16 +44,16 @@ function Navbar() {
         <div className="flex items-center justify-between gap-8 px-6 ">
           <Link
             to="/"
-            className="text-2xl font-bold text-blue-700 flex items-center gap-2"
+            className="text-4xl font-bold text-blue-700 flex items-center gap-2"
           >
             <HiBookOpen className="inline-block" /> Books
           </Link>
-          <ul className="md:flex space-x-6 font-normal hidden">
+          <ul className="md:flex space-x-6 font-medium text-3xl hidden">
             {NavLink.map((link) => (
               <Link
                 key={link.to}
                 to={link.path}
-                className="block text-base text-black text-md cursor-pointer hover:text-blue-700"
+                className="block text-xl text-black text-md cursor-pointer hover:text-blue-700"
               >
                 {link.to}
               </Link>
@@ -62,10 +63,11 @@ function Navbar() {
           <div className="space-x-12 hidden lg:flex items-center ">
             <button>
               <HiBars3 className="w-5 hover:text-blue-700" />
+              {user ? user.email : ""}
             </button>
           </div>
           {/* Toggle for mobile devices */}
-          <div className="md:hidden px-4 ">
+          <div className="md:hidden px-5 ">
             <button
               onClick={toggleMenu}
               className="text-black focus:outline-none"
@@ -88,7 +90,7 @@ function Navbar() {
             <Link
               key={link.to}
               to={link.path}
-              className="block text-base text-black uppercase cursor-pointer hover:text-blue-700"
+              className="block text-xl text-black cursor-pointer hover:text-blue-700"
             >
               {link.to}
             </Link>

@@ -13,7 +13,7 @@ import { EffectCards } from "swiper/modules";
 
 function BannerCard() {
   return (
-    <div className="banner">
+    <div className="banner px-12">
       <Swiper
         effect={"cards"}
         grabCursor={true}

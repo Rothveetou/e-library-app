@@ -12,7 +12,7 @@ app.use("/", book);
 
 mongoose
   .connect("mongodb://localhost/book")
-  .then(() => console.log("Server is connected"))
+  .then(() => console.log("Server is running"))
   .catch((error) => console.log("Failed to connect to the server", error));
 
 const port = process.env.PORT || 4000;

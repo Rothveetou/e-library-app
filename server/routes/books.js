@@ -37,15 +37,15 @@ router.put("/update-books/:id", async (req, res) => {
 
   const book = await Book.findByIdAndUpdate(
     new mongoose.Types.ObjectId(req.params.id),
-    { bookTitle: req.body.bookTitle },
-    { authorName: req.body.authorName },
-    { imageURL: req.body.imageURL },
-    { category: req.body.category },
-    { bookDescription: req.body.bookDescription },
-    { bookPdfURL: req.body.bookPdfURL },
     {
-      new: true,
-    }
+      bookTitle: req.body.bookTitle,
+      authorName: req.body.authorName,
+      imageURL: req.body.imageURL,
+      category: req.body.category,
+      bookDescription: req.body.bookDescription,
+      bookPdfURL: req.body.bookPdfURL,
+    },
+    { new: true }
   );
 
   if (!book)
@@ -70,8 +70,8 @@ router.get("/book/:id", async (req, res) => {
 
   if (!book)
     return res.status(404).send("The book with the given ID was not found.");
-  res.json(book);
-  res.send(book);
+
+  res.json(book); // Use only res.json() here
 });
 
 module.exports = router;
