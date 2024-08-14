@@ -1,0 +1,38 @@
+.banner .swiper {
+  width: 240px;
+  height: 340px;
+  z-index: 1;
+}
+
+.banner .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  box-shadow: 10px 10px 5px grey;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner .swiper-slide:nth-child(1n) {
+  background-image: url("https://m.media-amazon.com/images/I/71YxHqXOPTL._SX342_.jpg");
+}
+
+.banner .swiper-slide:nth-child(2n) {
+  background-image: url("https://m.media-amazon.com/images/I/51BDnlOHmvL._SY445_SX342_QL70_FMwebp_.jpg");
+}
+
+.banner .swiper-slide:nth-child(3n) {
+  background-image: url("https://m.media-amazon.com/images/I/71sKs5Ivf4L._SX342_.jpg");
+}
+
+.banner .swiper-slide:nth-child(4n) {
+  background-image: url("https://m.media-amazon.com/images/I/513Y5o-DYtL._SY445_SX342_QL70_FMwebp_.jpg");
+}
+
+.banner .swiper-slide:nth-child(5n) {
+  background-image: url("https://m.media-amazon.com/images/I/61QYNQFJ1uL._SY342_.jpg");
+}
